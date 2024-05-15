@@ -73,7 +73,7 @@ body {
   }
   
   #recipeButtons button {
-    background-color: #ffbc20;
+    background-color: #ff6a71;
     margin: 5px;
     padding: 8px 15px;
     color: #fff;
@@ -84,6 +84,5 @@ body {
   }
   
   #recipeButtons button:hover {
-    background-color: #d68a45;
+    background-color: #ff353f;
   }
-  
