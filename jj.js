@@ -25,7 +25,7 @@ function searchRecipe() {
       .catch(error => {
         console.error('Error fetching data:', error);
         // alert('Failed to fetch recipe. Please try again later.');
-        recipeContainer.innerHTML = 'We do not have this recipe yet 😐'
+        recipeContainer.innerHTML = '<p id="erm">We do not have this recipe yet 😐</p>'
         fetch('https://www.themealdb.com/api/json/v1/1/random.php')
         .then(response => response.json())
         .then(data => {
@@ -51,7 +51,12 @@ function searchRecipe() {
 
   function displayRecipe(recipe) {
     const recipeContainer = document.getElementById('recipeContainer');
-    recipeContainer.innerHTML='';
+    // recipeContainer.innerHTML='';
+    try{
+    document.getElementById("erm").remove();
+    }
+    catch{
+    }
 
     if (!recipe) {
       recipeContainer.innerHTML = '<p>No recipe found.</p>';
