@@ -20,7 +20,6 @@
   <script>
     // Event listener to trigger searchRecipe() on Enter key press
     document.getElementById('searchInput').addEventListener('keydown', function(event) {
-      console.log('Key pressed:', event.key); // Debugging line
       if (event.key === 'Enter') {
         searchRecipe();
       }
@@ -41,7 +40,7 @@
           recipeContainer.innerHTML = '';
           recipeButtons.innerHTML = '';
 
-          if (data.meals && data.meals.length !== 1) {
+          if (data.meals && data.meals.length != 1) {
             data.meals.forEach(meal => {
               displayRecipeButton(meal);
             });
