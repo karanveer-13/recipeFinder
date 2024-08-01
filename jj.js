@@ -5,11 +5,13 @@ function searchRecipe() {
       return;
     }
 
-    document.getElementById('searchInput').addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        searchRecipe();
-      }
-    });
+    window.onload = function() {
+      document.getElementById('searchInput').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          searchRecipe();
+        }
+      });
+    };
 
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`)
       .then(response => response.json())
