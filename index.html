@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipe Finder</title>
-  <link href="st.css" rel="stylesheet">
-</head>
 <body>
   <h1>Recipe Finder</h1>
   
-  <input type="text" id="searchInput" placeholder="Enter a recipe name">
-  <button onclick="searchRecipe()">Search</button>
-  <button onclick="getRandomRecipe()">Random Recipe</button>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Enter a recipe name">
+    <button onclick="searchRecipe()">Search</button>
+    <button onclick="getRandomRecipe()">Random Recipe</button>
+  </div>
 
   <div id="recipeContainer">Your favourite recipes here ✌️😊</div>
   <div id="recipeButtons"></div>
 
   <script src="jj.js"></script>
 </body>
-</html>
