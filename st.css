@@ -1,88 +1,150 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fef5da;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #ff6a71;
-    margin-top: 25px; 
-  }
-  
-  input[type="text"] {
-    width: 60%; 
-    padding: 12px; 
-    margin: 20px auto; 
-    display: block;
-    border: 2px solid #ccc;
-    border-radius: 25px; 
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #ff6a71;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    margin: 2px;
-    transition: background-color 0.1s ease;
-  }
-  
-  button:hover {
-    background-color: #ff353f;
-  }
-  
-  #recipeContainer {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  #recipeContainer h2 {
-    color: #333;
-    text-align: center;
-  }
-  
-  #recipeContainer img {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  #recipeContainer ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  #recipeContainer ul li {
-    margin-bottom: 10px;
-  }
-  
-  #recipeButtons {
-    text-align: center;
-  }
-  
-  #recipeButtons button {
-    background-color: #ff6a71;
-    margin: 5px;
-    padding: 8px 15px;
-    color: #fff;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  #recipeButtons button:hover {
-    background-color: #ff353f;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #fff4e6, #ffe7e7);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #ff4b5c;
+  margin-top: 30px;
+  font-size: 2.5rem;
+}
+
+.search-container {
+  text-align: center;
+  margin: 20px auto;
+}
+
+input[type="text"] {
+  width: 50%;
+  max-width: 400px;
+  padding: 12px 20px;
+  margin: 10px;
+  border: 2px solid #ff9e9e;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #ff4b5c;
+  box-shadow: 0 0 10px #ffccd2;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #ff4b5c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 5px;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: #e33f4a;
+  transform: scale(1.05);
+}
+
+#recipeContainer {
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in;
+}
+
+#recipeContainer h2 {
+  color: #ff4b5c;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#recipeContainer img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+#recipeContainer ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+#recipeContainer ul li {
+  background-color: #fff8f8;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-left: 4px solid #ff4b5c;
+  border-radius: 6px;
+}
+
+#recipeContainer p {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+#recipeContainer a {
+  text-decoration: none;
+}
+
+#inst {
+  background-color: #ffbb00;
+  color: black;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#inst:hover {
+  background-color: #ffaa00;
+}
+
+#recipeButtons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#recipeButtons button {
+  background-color: #ffc2c7;
+  color: #333;
+  margin: 5px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  border: 1px solid #ffccd2;
+}
+
+#recipeButtons button:hover {
+  background-color: #ffb1b8;
+}
+
+/* Error text styling */
+#erm {
+  color: #c70039;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#error_text {
+  color: #444;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
