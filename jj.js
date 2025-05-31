@@ -108,3 +108,13 @@ function searchRecipe() {
     });
     recipeButtons.appendChild(recipeButton);
   }
+
+// Attach Enter key listener when page loads
+window.onload = function() {
+  document.getElementById('searchInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      searchRecipe();
+    }
+  });
+};
+
