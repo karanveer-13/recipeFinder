@@ -5,15 +5,7 @@ function searchRecipe() {
       return;
     }
 
-    window.onload = function() {
-      document.getElementById('searchInput').addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-          searchRecipe();
-        }
-      });
-    };
-
-    fetch(https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery})
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`)
       .then(response => response.json())
       .then(data => {
         console.log(data.meals.length);
@@ -76,23 +68,23 @@ function searchRecipe() {
     recipeContainer.appendChild(recipeTitle);
 
     const recipeImage = document.createElement('img');
-    recipeImage.src = ${recipe.strMealThumb}/preview;
+    recipeImage.src = `${recipe.strMealThumb}/preview`;
     recipeImage.alt = recipe.strMeal;
     recipeContainer.appendChild(recipeImage);
 
     const ingredientsList = document.createElement('ul');
     for (let i = 1; i <= 20; i++) {
-      const ingredient = recipe[strIngredient${i}];
-      const measure = recipe[strMeasure${i}];
+      const ingredient = recipe[`strIngredient${i}`];
+      const measure = recipe[`strMeasure${i}`];
       if (ingredient) {
         const listItem = document.createElement('li');
-        listItem.textContent = ${ingredient} - ${measure};
+        listItem.textContent = `${ingredient} - ${measure}`;
         ingredientsList.appendChild(listItem);
       }
     }
     const recipeInstructions = document.createElement('p');
     var txt = "<h3>Instructions: </h3>";
-    var link = <p><a href=${recipe.strYoutube}><button id='inst'>Click here for video tutorial</button></a></p>
+    var link = `<p><a href=${recipe.strYoutube}><button id='inst'>Click here for video tutorial</button></a></p>`
     recipeInstructions.innerHTML = txt + recipe.strInstructions + link;
     recipeContainer.appendChild(ingredientsList);
     recipeContainer.appendChild(recipeInstructions);
