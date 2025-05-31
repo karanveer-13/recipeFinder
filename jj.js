@@ -16,27 +16,37 @@ function searchRecipe() {
     return;
   }
 
-  recipeContainer.innerHTML = "";
+  // Clear old buttons but keep shown recipes
   recipeButtons.innerHTML = "";
-  recipeContainer.style.display = "none";
+  document.getElementById("erm")?.remove();
 
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`)
     .then((response) => response.json())
     .then((data) => {
       if (!data.meals) {
-        recipeContainer.innerHTML = '<p id="erm">We do not have this recipe yet 😐</p>';
-        recipeContainer.style.display = "block";
+        const errMsg = document.createElement("p");
+        errMsg.id = "erm";
+        errMsg.textContent = "We do not have this recipe yet 😐";
+        recipeContainer.appendChild(errMsg);
 
         fetch("https://www.themealdb.com/api/json/v1/1/random.php")
           .then((res) => res.json())
           .then((randomData) => {
-            recipeButtons.innerHTML = '<h5 id="error_text">Wanna try this: </h5>';
+            const errLabel = document.createElement("h5");
+            errLabel.id = "error_text";
+            errLabel.textContent = "Wanna try this:";
+            recipeButtons.appendChild(errLabel);
             displayRecipeButton(randomData.meals[0]);
           });
+
         return;
       }
 
       if (data.meals.length !== 1) {
+        const suggestionLabel = document.createElement("h5");
+        suggestionLabel.textContent = "Choose a recipe:";
+        recipeButtons.appendChild(suggestionLabel);
+
         data.meals.forEach((meal) => displayRecipeButton(meal));
       } else {
         displayRecipe(data.meals[0]);
@@ -49,13 +59,6 @@ function searchRecipe() {
 }
 
 function getRandomRecipe() {
-  const recipeContainer = document.getElementById("recipeContainer");
-  const recipeButtons = document.getElementById("recipeButtons");
-
-  recipeContainer.innerHTML = "";
-  recipeButtons.innerHTML = "";
-  recipeContainer.style.display = "none";
-
   fetch("https://www.themealdb.com/api/json/v1/1/random.php")
     .then((response) => response.json())
     .then((data) => {
@@ -70,12 +73,9 @@ function getRandomRecipe() {
 function displayRecipe(recipe) {
   const recipeContainer = document.getElementById("recipeContainer");
   recipeContainer.style.display = "block";
-  recipeContainer.innerHTML = "";
 
-  if (!recipe) {
-    recipeContainer.innerHTML = "<p>No recipe found.</p>";
-    return;
-  }
+  const recipeCard = document.createElement("div");
+  recipeCard.className = "recipeCard";
 
   const recipeTitle = document.createElement("h2");
   recipeTitle.textContent = recipe.strMeal;
@@ -99,10 +99,12 @@ function displayRecipe(recipe) {
   recipeInstructions.innerHTML = `<h3>Instructions:</h3>${recipe.strInstructions}<br><br>
     <a href="${recipe.strYoutube}" target="_blank"><button id="inst">Click here for video tutorial</button></a>`;
 
-  recipeContainer.appendChild(recipeTitle);
-  recipeContainer.appendChild(recipeImage);
-  recipeContainer.appendChild(ingredientsList);
-  recipeContainer.appendChild(recipeInstructions);
+  recipeCard.appendChild(recipeTitle);
+  recipeCard.appendChild(recipeImage);
+  recipeCard.appendChild(ingredientsList);
+  recipeCard.appendChild(recipeInstructions);
+
+  recipeContainer.appendChild(recipeCard);
 }
 
 function displayRecipeButton(recipe) {
@@ -111,9 +113,6 @@ function displayRecipeButton(recipe) {
   recipeButton.textContent = recipe.strMeal;
   recipeButton.addEventListener("click", function () {
     displayRecipe(recipe);
-    recipeButton.remove();
-    const errText = document.getElementById("error_text");
-    if (errText) errText.remove();
   });
   recipeButtons.appendChild(recipeButton);
 }
